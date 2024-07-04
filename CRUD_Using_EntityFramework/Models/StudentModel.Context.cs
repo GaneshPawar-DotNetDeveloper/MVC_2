@@ -26,5 +26,6 @@ namespace CRUD_Using_EntityFramework.Models
         }
     
         public virtual DbSet<student> students { get; set; }
+        public virtual DbSet<Trainer> Trainers { get; set; }
     }
 }

@@ -114,6 +114,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\studentsController.cs" />
+    <Compile Include="Controllers\TrainersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -136,6 +137,10 @@
       <DependentUpon>StudentModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\StudentPartial.cs" />
+    <Compile Include="Models\Trainer.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TrainerPartial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +160,11 @@
     <Content Include="Views\students\Details.cshtml" />
     <Content Include="Views\students\Edit.cshtml" />
     <Content Include="Views\students\Index.cshtml" />
+    <Content Include="Views\Trainers\Create.cshtml" />
+    <Content Include="Views\Trainers\Delete.cshtml" />
+    <Content Include="Views\Trainers\Details.cshtml" />
+    <Content Include="Views\Trainers\Edit.cshtml" />
+    <Content Include="Views\Trainers\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -20,7 +20,10 @@
         <th>
             @Html.DisplayNameFor(model => model.DOB)
         </th>
-        <th></th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.TrainerId)
+        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -35,9 +38,12 @@
             @Html.DisplayFor(modelItem => item.DOB)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.RollNumber }) |
-            @Html.ActionLink("Details", "Details", new { id=item.RollNumber }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.RollNumber })
+            @Html.DisplayFor(modelItem => item.Trainer.TrainerName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.RollNumber }) |
+            @Html.ActionLink("Details", "Details", new { id = item.RollNumber }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.RollNumber })
         </td>
     </tr>
 }
