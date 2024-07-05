@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<CRUD_Using_EntityFramework.Models.student>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "studentsbytrainer";
 }
 
-<h2>Index</h2>
+<h2>studentsbytrainer</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -20,10 +20,10 @@
         <th>
             @Html.DisplayNameFor(model => model.DOB)
         </th>
-        
         <th>
             @Html.DisplayNameFor(model => model.Trainer.TrainerName)
         </th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -41,11 +41,12 @@
             @Html.DisplayFor(modelItem => item.Trainer.TrainerName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.RollNumber }) |
-            @Html.ActionLink("Details", "Details", new { id = item.RollNumber }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.RollNumber })
+            @Html.ActionLink("Edit", "Edit", new { id=item.RollNumber }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RollNumber }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RollNumber })
         </td>
     </tr>
 }
 
 </table>
+@Html.ActionLink("Back to trainer list","Index")

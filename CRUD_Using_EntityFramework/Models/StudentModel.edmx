@@ -13,9 +13,34 @@
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="DOB" Type="date" />
+          <Property Name="TrainerId" Type="int" />
         </EntityType>
+        <EntityType Name="Trainer">
+          <Key>
+            <PropertyRef Name="TrainerId" />
+          </Key>
+          <Property Name="TrainerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TrainerName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Student_Class">
+          <End Role="Trainer" Type="Self.Trainer" Multiplicity="0..1" />
+          <End Role="student" Type="Self.student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="TrainerId" />
+            </Principal>
+            <Dependent Role="student">
+              <PropertyRef Name="TrainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ADONETB15ModelStoreContainer">
           <EntitySet Name="student" EntityType="Self.student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trainer" EntityType="Self.Trainer" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Student_Class" Association="Self.FK_Student_Class">
+            <End Role="Trainer" EntitySet="Trainer" />
+            <End Role="student" EntitySet="student" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -29,10 +54,37 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="TrainerId" Type="Int32" />
+          <NavigationProperty Name="Trainer" Relationship="ADONETB15Model.FK_Student_Class" FromRole="student" ToRole="Trainer" />
         </EntityType>
         <EntityContainer Name="StudentDbContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="students" EntityType="Self.student" />
+          <EntitySet Name="Trainers" EntityType="ADONETB15Model.Trainer" />
+          <AssociationSet Name="FK_Student_Class" Association="ADONETB15Model.FK_Student_Class">
+            <End Role="Trainer" EntitySet="Trainers" />
+            <End Role="student" EntitySet="students" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Trainer">
+          <Key>
+            <PropertyRef Name="TrainerId" />
+          </Key>
+          <Property Name="TrainerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TrainerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="students" Relationship="ADONETB15Model.FK_Student_Class" FromRole="Trainer" ToRole="student" />
+        </EntityType>
+        <Association Name="FK_Student_Class">
+          <End Type="ADONETB15Model.Trainer" Role="Trainer" Multiplicity="0..1" />
+          <End Type="ADONETB15Model.student" Role="student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trainer">
+              <PropertyRef Name="TrainerId" />
+            </Principal>
+            <Dependent Role="student">
+              <PropertyRef Name="TrainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -42,10 +94,19 @@
           <EntitySetMapping Name="students">
             <EntityTypeMapping TypeName="ADONETB15Model.student">
               <MappingFragment StoreEntitySet="student">
+                <ScalarProperty Name="TrainerId" ColumnName="TrainerId" />
                 <ScalarProperty Name="RollNumber" ColumnName="RollNumber" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="DOB" ColumnName="DOB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trainers">
+            <EntityTypeMapping TypeName="ADONETB15Model.Trainer">
+              <MappingFragment StoreEntitySet="Trainer">
+                <ScalarProperty Name="TrainerName" ColumnName="TrainerName" />
+                <ScalarProperty Name="TrainerId" ColumnName="TrainerId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -12,14 +12,18 @@ namespace CRUD_Using_EntityFramework.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class student
+    public partial class Trainer
     {
-        public int RollNumber { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public Nullable<System.DateTime> DOB { get; set; }
-        public Nullable<int> TrainerId { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Trainer()
+        {
+            this.students = new HashSet<student>();
+        }
     
-        public virtual Trainer Trainer { get; set; }
+        public int TrainerId { get; set; }
+        public string TrainerName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<student> students { get; set; }
     }
 }
