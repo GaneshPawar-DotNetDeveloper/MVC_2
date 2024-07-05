@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index1</title>
+</head>
+<body>
+    <div> 
+        <h2>
+            Index1 view content
+        </h2>
+     @*  <input type="text" value="Name" /><input type="button"value="Submit" />*@
+        @{
+            Html.RenderPartial("_partialview");
+
+        }
+    </div>
+    @Html.ActionLink(" BackTo Index","Index")
+    <br />
+    
+</body>
+</html>
