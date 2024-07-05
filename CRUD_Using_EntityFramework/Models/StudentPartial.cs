@@ -26,7 +26,7 @@ namespace CRUD_Using_EntityFramework.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public Nullable<System.DateTime> DOB { get; set; }
 
-        public Nullable<int> TrainerId { get; set; }
+        public Trainer Trainer { get; set; }
 
 
     }

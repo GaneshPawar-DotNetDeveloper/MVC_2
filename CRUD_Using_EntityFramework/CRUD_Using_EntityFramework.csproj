@@ -165,6 +165,7 @@
     <Content Include="Views\Trainers\Details.cshtml" />
     <Content Include="Views\Trainers\Edit.cshtml" />
     <Content Include="Views\Trainers\Index.cshtml" />
+    <Content Include="Views\Trainers\studentsbytrainer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
