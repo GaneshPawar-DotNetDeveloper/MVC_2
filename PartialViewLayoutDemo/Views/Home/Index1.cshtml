@@ -1,6 +1,6 @@
 ﻿
 @{
-    Layout = null;
+    Layout = "~/views/shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -11,18 +11,18 @@
     <title>Index1</title>
 </head>
 <body>
-    <div> 
+    <div>
         <h2>
             Index1 view content
         </h2>
-     @*  <input type="text" value="Name" /><input type="button"value="Submit" />*@
+        @*  <input type="text" value="Name" /><input type="button"value="Submit" />*@
         @{
             Html.RenderPartial("_partialview");
 
         }
     </div>
-    @Html.ActionLink(" BackTo Index","Index")
+    @Html.ActionLink(" BackTo Index", "Index")
     <br />
-    
+
 </body>
 </html>

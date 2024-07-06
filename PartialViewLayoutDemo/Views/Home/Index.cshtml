@@ -1,6 +1,6 @@
 ﻿
 @{
-    Layout = null;
+    Layout = "~/views/shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -16,11 +16,39 @@
             Index view content
         </h2>
 
-      @*  <input type="text" value="Name" /><input type="button" value="Submit" />*@
+        @*  <input type="text" value="Name" /><input type="button" value="Submit" />*@
         @Html.Partial("_partialview")
     </div>
-    @Html.ActionLink("BackTo Index1","Index1")<br />
+    @Html.ActionLink("go To Index1", "Index1")<br />
 
-    @Html.ActionLink("BackTo partialview","PartialView")
+    @Html.ActionLink("go to  Action", "Action") <br />
+    @Html.ActionLink("go To RenderAction", "RenderAction")
 </body>
 </html>
+
+@section mysection
+    {
+
+    <p>
+        this is another Dynamic content from Index page
+    </p>
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Action</title>
+    </head>
+    <body>
+        <div>
+            @* @Html.Action("Action")*@
+            @Html.Action("Action")
+        </div>
+
+        @Html.ActionLink("go To Index1", "Index1")
+
+    </body>
+</html>
+
+
+}

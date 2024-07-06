@@ -18,13 +18,18 @@ namespace PartialViewLayoutDemo.Controllers
         {
             return View();
         }
-        public PartialViewResult PartialViewResult()
+        public PartialViewResult Action()
         {
             return PartialView("_partialview");
         }
-        public PartialViewResult PartialViewResult1()
+         public PartialViewResult RenderAction()
         {
             return PartialView("_partialview");
         }
+        public PartialViewResult just()
+        {
+            return PartialView("_partialview");
+        }
+       
     }
 }

@@ -105,8 +105,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Index1.cshtml" />
     <Content Include="Views\shared\_partialview.cshtml" />
-    <Content Include="Views\Home\PartialView.cshtml" />
-    <Content Include="Views\Home\PartialViewResult1.cshtml" />
+    <Content Include="Views\shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Action.cshtml" />
+    <Content Include="Views\Home\RenderAction.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
