@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RenderAction</title>
+</head>
+<body>
+    <div>
+        <h2>
+            use RenderAction method
+        </h2>
+        @{
+            Html.RenderAction("RenderAction");
+        }
+    </div>
+    @Html.ActionLink("go To Index1", "Index1")
+
+</body>
+</html>

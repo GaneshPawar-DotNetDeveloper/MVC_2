@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>_Layout</title>
+</head>
+<body>
+    <div> 
+
+        <h2>
+            this is layout page content
+        </h2>
+        
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <div>
+        CopyRight2024
+    </div>
+
+</body>
+</html>
+@if (IsSectionDefined("mysection"))
+{
+                @RenderSection("mysection")
+}
+else
+{
+    <p>Default content</p>}
