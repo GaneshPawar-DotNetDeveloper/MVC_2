@@ -8,16 +8,16 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FBE4A8C1-3876-4B42-A12F-2A79A2EF11F3}</ProjectGuid>
+    <ProjectGuid>{0C436E84-ECBD-4C83-B90C-3E11A71E23C4}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CRUD_Using_EntityFramework</RootNamespace>
-    <AssemblyName>CRUD_Using_EntityFramework</AssemblyName>
+    <RootNamespace>TwoTablesCommunicate</RootNamespace>
+    <AssemblyName>TwoTablesCommunicate</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44362</IISExpressSSLPort>
+    <IISExpressSSLPort>44377</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -99,59 +99,62 @@
   <ItemGroup>
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
-    <Content Include="Models\StudentModel.Context.tt">
+    <Content Include="Models\Student.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>StudentModel.Context.cs</LastGenOutput>
-      <DependentUpon>StudentModel.edmx</DependentUpon>
+      <LastGenOutput>Student.Context.cs</LastGenOutput>
+      <DependentUpon>Student.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\StudentModel.tt">
+    <Content Include="Models\Student.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StudentModel.edmx</DependentUpon>
-      <LastGenOutput>StudentModel.cs</LastGenOutput>
+      <DependentUpon>Student.edmx</DependentUpon>
+      <LastGenOutput>Student1.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="common\CustomDateRangeAtrribute.cs" />
+    <Compile Include="common\RemoteClirentSideAttributes.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\studentsController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\TrainersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Student.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Student.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\student.cs">
-      <DependentUpon>StudentModel.tt</DependentUpon>
+      <DependentUpon>Student.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StudentModel.Context.cs">
+    <Compile Include="Models\Student.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StudentModel.Context.tt</DependentUpon>
+      <DependentUpon>Student.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\StudentModel.cs">
+    <Compile Include="Models\Student1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StudentModel.tt</DependentUpon>
+      <DependentUpon>Student.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\StudentModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StudentModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\StudentPartial.cs" />
+    <Compile Include="Models\StudentMetaData.cs" />
     <Compile Include="Models\Trainer.cs">
-      <DependentUpon>StudentModel.tt</DependentUpon>
+      <DependentUpon>Student.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TrainerPartial.cs" />
+    <Compile Include="Models\TrainerMetaData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="Models\StudentModel.edmx">
+    <EntityDeploy Include="Models\Student.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>StudentModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Student.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\StudentModel.edmx.diagram">
-      <DependentUpon>StudentModel.edmx</DependentUpon>
+    <Content Include="Models\Student.edmx.diagram">
+      <DependentUpon>Student.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -166,12 +169,11 @@
     <Content Include="Views\Trainers\Details.cshtml" />
     <Content Include="Views\Trainers\Edit.cshtml" />
     <Content Include="Views\Trainers\Index.cshtml" />
- Validation
+    <Content Include="Views\students\About.cshtml" />
+    <Content Include="Views\students\StudentByTrainer.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-
-    <Content Include="Views\Trainers\studentsbytrainer.cshtml" />
- main
+    <Content Include="Views\Default\post.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -184,6 +186,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CRUD_Using_EntityFramework\CRUD_Using_EntityFramework.csproj">
+      <Project>{FBE4A8C1-3876-4B42-A12F-2A79A2EF11F3}</Project>
+      <Name>CRUD_Using_EntityFramework</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -198,9 +206,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>59864</DevelopmentServerPort>
+          <DevelopmentServerPort>51227</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44362/</IISUrl>
+          <IISUrl>https://localhost:44377/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
