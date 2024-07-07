@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Mvc;
 using CRUD_Using_EntityFramework.Models;
@@ -122,6 +123,13 @@ namespace CRUD_Using_EntityFramework.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult studentsbytrainer(int id)
+        {
+            var students = db.students.Where(s => s.TrainerId == id);
+
+            return View(students);
+            
         }
     }
 }

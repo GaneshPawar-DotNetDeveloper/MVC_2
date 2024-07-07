@@ -38,6 +38,13 @@ namespace CRUD_Using_EntityFramework.Controllers
         // GET: students/Create
         public ActionResult Create()
         {
+
+
+            ViewBag.TrainerId = db.Trainers.Select(t => new SelectListItem()
+            {
+                Text = t.TrainerName,
+                Value = t.TrainerId.ToString()
+            });
             return View();
         }
 
@@ -65,12 +72,20 @@ namespace CRUD_Using_EntityFramework.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            ViewBag.TrainerId = db.Trainers.Select(t => new SelectListItem()
+            {
+                Text = t.TrainerName,
+                Value = t.TrainerId.ToString(),
+                Selected = t.TrainerId == id
+            });
             student student = db.students.Find(id);
             if (student == null)
             {
                 return HttpNotFound();
             }
             return View(student);
+           
         }
 
         // POST: students/Edit/5

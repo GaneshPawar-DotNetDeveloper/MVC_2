@@ -166,8 +166,12 @@
     <Content Include="Views\Trainers\Details.cshtml" />
     <Content Include="Views\Trainers\Edit.cshtml" />
     <Content Include="Views\Trainers\Index.cshtml" />
+ Validation
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+
+    <Content Include="Views\Trainers\studentsbytrainer.cshtml" />
+ main
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
