@@ -114,8 +114,10 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="common\CustomDateRangeAtrribute.cs" />
+    <Compile Include="common\RemoteClirentSideAttributes.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\studentsController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Controllers\TrainersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -171,6 +173,7 @@
     <Content Include="Views\students\StudentByTrainer.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Default\post.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -183,6 +186,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CRUD_Using_EntityFramework\CRUD_Using_EntityFramework.csproj">
+      <Project>{FBE4A8C1-3876-4B42-A12F-2A79A2EF11F3}</Project>
+      <Name>CRUD_Using_EntityFramework</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

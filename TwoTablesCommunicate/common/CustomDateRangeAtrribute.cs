@@ -12,7 +12,7 @@ namespace TwoTablesCommunicate.common
 
         public override bool IsValid(object value)
         {
-           
+           if(value is DateTime) { 
             DateTime inputtime = (DateTime)value;
             if (inputtime < DateTime.Now)
             {
@@ -22,7 +22,9 @@ namespace TwoTablesCommunicate.common
             {
                 return false;
             }
-        
+                }
+           else
+                return false;
            
         }
 

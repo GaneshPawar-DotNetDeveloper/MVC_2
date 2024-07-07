@@ -38,26 +38,25 @@
             </div>
         </div>
 
-        <div class="form-group">
-           @* @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })*@
-            <div class="col-md-10">
-                @if (Model == null)
-                {
+          <div class="form-group">
+              @* @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })*@
+              <div class="col-md-10">
+
+                  @if (Model != null && Model.DOB.HasValue)
+                  {
+                      var DateToShow = Model.DOB.Value.ToString("yyyy-MM-dd");
+                      <input type="date" id="DOB" name="DOB" value="@DateToShow" class="form-control" />
+                  }
+                  else
+                  {
+                      <input type="date" id="DOB" name="DOB" class="form-control" />
+                  }
 
 
-                    <input type="date" id="DOB" name="DOB" class="form-control" /> }
-                else
-                {
-                    var DateToShow = ((DateTime)Model.DOB).ToString("yyyy-MM-dd");
-                    <input type="date" id="DOB" value="DateToShow" class="form-control" />}
-                
-
-               
-               
-               @* @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control" } })*@
-                @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                  @* @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control" } })*@
+                  @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+              </div>
+          </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.TrainerId, "TrainerId", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -79,6 +78,6 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@

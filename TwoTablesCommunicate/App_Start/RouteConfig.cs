@@ -16,8 +16,10 @@ namespace TwoTablesCommunicate
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "students", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Students", action = "Index", id = UrlParameter.Optional },
+                 new[] { "TwoTablesCommunicate.Controllers" }
             );
+           
         }
     }
 }

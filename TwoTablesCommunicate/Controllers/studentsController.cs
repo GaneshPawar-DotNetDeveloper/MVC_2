@@ -10,11 +10,13 @@ using TwoTablesCommunicate.Models;
 
 namespace TwoTablesCommunicate.Controllers
 {
-    public class studentsController : Controller
+    //[Authorize]
+    public class StudentsController : Controller
     {
         private studentcontext db = new studentcontext();
 
         // GET: students
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var students = db.students.Include(s => s.Trainer);
@@ -141,7 +143,28 @@ namespace TwoTablesCommunicate.Controllers
             var students = db.students.Where(s => s.TrainerId == TrainerId);
             return View(students);
         }
-        
+        [HttpGet]
+        /* public JsonResult IsEmailExists(string Email)
+         {
+            // bool isEmailExists = db.students.Any(s => s.Email == Email);
+             bool isEmailExists = db.students.Any(s => s.Email.ToLower() == Email.ToLower());
+
+             return Json(!isEmailExists, JsonRequestBehavior.AllowGet);
+         }*/
+
+        [HttpPost]
+        public JsonResult IsEmailExists(string Email)
+        {
+            bool sw= !db.students.Any(s => s.Email == Email);
+            return Json(sw,JsonRequestBehavior.AllowGet);
+        }
+
+
+       /* public JsonResult IsUserNameAvailable(string UserName)
+        {
+            bool isAvailable = !db.Users.Any(x => x.UserName == UserName);
+            return Json(isAvailable, JsonRequestBehavior.AllowGet);
+        }*/
     }
 
 }
