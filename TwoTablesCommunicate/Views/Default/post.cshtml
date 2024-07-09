@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "post";
+    Layout =    null;
+}
+
+<h2>post</h2>
+@using (Html.BeginForm("post", "Default", FormMethod.Post))
+{
+    <label>Comment:</label>
+    @Html.TextArea("comment", new { rows = "5", cols = "70" })
+    <br />
+    <input type="submit" value="Create Post" />
+    if (ViewBag.Message != null)
+    {
+        <p>@ViewBag.Message</p>
+    }
+}

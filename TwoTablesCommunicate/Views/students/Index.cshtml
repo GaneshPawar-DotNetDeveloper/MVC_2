@@ -1,0 +1,60 @@
+﻿@model IEnumerable<TwoTablesCommunicate.Models.student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create") <br />
+    @DateTime.Now
+</p>
+<table class="table2" id="myTable2">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DOB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Trainer.TrainerName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trainer.TrainerName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.RollNumber }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.RollNumber }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.RollNumber })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>
+@Html.Action("GetPArtialCFontent")
