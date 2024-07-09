@@ -1,0 +1,79 @@
+#ViewData
+
+#RoutConfig.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.Routing;
+
+namespace MVCViewData
+{
+    public class RouteConfig
+    {
+        public static void RegisterRoutes(RouteCollection routes)
+        {
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
+        }
+    }
+}
+
+#HomeController.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MVCViewData.Controllers
+{
+    public class HomeController : Controller
+    {
+        // GET: Home
+        [HttpGet]
+        public ActionResult Index()
+        {
+            ViewData["Name"] = "Suraj Pawar";
+            ViewData["Brothers"] = new string[] { "Suraj", "Ganesh", "Pruthviraj" };
+            return View();
+        }
+    }
+}
+
+#Index.cshtml
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <h2> Family Of : @ViewData["Name"]</h2>
+    </div>
+    <div>
+        <ul>
+            @foreach (var s in (string[])ViewData["Brothers"])
+            {
+                <li>@s</li>
+            }
+        </ul>
+    </div>
+</body>
+</html>
