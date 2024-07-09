@@ -16,14 +16,31 @@ namespace TwoTablesCommunicate.Controllers
         private studentcontext db = new studentcontext();
 
         // GET: students
+ ExceptionHandle-In-MVC
+        // [AllowAnonymous]
+        //  [OutputCache(Duration =60)]
+        //  [OutputCache(CacheProfile = "2minutechache")]
+        [HandleError(View ="Error")]
+        public ActionResult Index()
+        {
+           
+            throw new Exception("there is some problem");
+
+          // return View(db.students.ToString());
+
         [AllowAnonymous]
         public ActionResult Index()
         {
+ main
             var students = db.students.Include(s => s.Trainer);
             return View(students.ToList());
         }
 
+ExceptionHandle-In-MVC
+        // GET: students/Details/5x`
+
         // GET: students/Details/5
+ main
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -160,11 +177,25 @@ namespace TwoTablesCommunicate.Controllers
         }
 
 
+ ExceptionHandle-In-MVC
+        /* public JsonResult IsUserNameAvailable(string UserName)
+         {
+             bool isAvailable = !db.Users.Any(x => x.UserName == UserName);
+             return Json(isAvailable, JsonRequestBehavior.AllowGet);
+         }*/
+        [HttpGet]
+        [OutputCache(Duration =3)]
+        public PartialViewResult GetPArtialCFontent()
+        {
+            return PartialView("_partialView");
+        }
+
        /* public JsonResult IsUserNameAvailable(string UserName)
         {
             bool isAvailable = !db.Users.Any(x => x.UserName == UserName);
             return Json(isAvailable, JsonRequestBehavior.AllowGet);
         }*/
+ main
     }
 
 }
