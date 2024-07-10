@@ -1,0 +1,40 @@
+﻿
+@{ 
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Scripts/jquery-3.7.1.min.js"></script>
+
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<h2>
+    main view content
+</h2>
+ 
+@Ajax.ActionLink("PartialView1", "partialView1",
+new AjaxOptions
+{
+    HttpMethod="Get",
+    UpdateTargetId="divPartial",
+    InsertionMode=InsertionMode.Replace
+})
+
+@Ajax.ActionLink("PartialView2", "partialView2",
+new AjaxOptions
+{
+    HttpMethod="Get",
+    UpdateTargetId="divPartial",
+    InsertionMode=InsertionMode.Replace
+})
+
+@Ajax.ActionLink("PartialView3", "partialView3",
+new AjaxOptions
+{
+    HttpMethod="Get",
+    UpdateTargetId="divPartial",
+    InsertionMode=InsertionMode.Replace
+})
+
+<div id="divPartial"></div>
+
+
+
