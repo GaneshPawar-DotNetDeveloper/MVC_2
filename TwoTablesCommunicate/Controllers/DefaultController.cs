@@ -9,13 +9,17 @@ namespace TwoTablesCommunicate.Controllers
     public class DefaultController : Controller
     {
         // GET: Default
+ ExceptionHandle-In-MVC
         [ChildActionOnly]
         //[NonAction]
+
+ main
         [HttpGet]
         public ActionResult post()
         {
             return View();
         }
+ ExceptionHandle-In-MVC
         [ValidateInput(false)]
         [HttpPost]
         public string post(string comment)
@@ -25,5 +29,7 @@ namespace TwoTablesCommunicate.Controllers
             
             return comment;
         }
+
+ main
     }
 }

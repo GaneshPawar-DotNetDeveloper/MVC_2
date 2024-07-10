@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CRUD_Using_EntityFramework.Models.Trainer>
+﻿ @model IEnumerable<CRUD_Using_EntityFramework.Models.Trainer>
 
 @{
     ViewBag.Title = "Index";
@@ -25,7 +25,8 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.TrainerId }) |
             @Html.ActionLink("Details", "Details", new { id=item.TrainerId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TrainerId })
+            @Html.ActionLink("Delete", "Delete", new { id=item.TrainerId }) |
+            @Html.ActionLink("students","studentsbytrainer", new { id = item.TrainerId })
         </td>
     </tr>
 }
